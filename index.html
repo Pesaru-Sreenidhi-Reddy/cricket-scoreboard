@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Cricket Score Board</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div id="over-container">
+    <label for="overs" title="Please enter number of overs for displaying balls remaining">Overs:</label>&nbsp;<input type="number" id="overs">
+    <br>
+    <br>
+    <label for="team1name" title="Please enter name of one team">Team 1 name:</label>&nbsp;<input type="text" id="team1name">
+    <br>
+    <br>
+<label for="team2name" title="Please enter name of another team">Team 2 name:</label>&nbsp;<input type="text" id="team2name">
+    <br>
+    <br>
+    <label for="whoIsBattingFirst" title="Please enter who is batting first">Who is batting first:</label>&nbsp;<input type="text" id="whoIsBattingFirst">
+    <br>
+    <br>
+    <button type="button" onclick="storeOvers()">Submit</button>
+</div>
+<div id="teams-container" class="hidden">
+ <div>
+    <div >
+    <h2 id="team1h2"></h2>
+    <h3 id="team1score"></h3>
+    <div id="team1upd">
+    <label for="team1runs">Runs:</label><input id="team1runs">
+    <button onclick="enterRuns(event)" id="team1btn">Update</button>
+    </div>
+    </div>
+
+    <div >
+    <h2 id="team2h2"></h2>
+    <h3 id="team2score"></h3>
+    <div id="team2upd">
+    <label for="team2runs">Runs:</label><input id="team2runs">
+    <button onclick="enterRuns(event)" id="team2btn">Update</button>
+    </div>
+    </div>
+</div>
+    <p id="res">Number of balls remaining:<span id="balls-rem"></span></p>
+</div>
+</div>
+</body>
+</html>
