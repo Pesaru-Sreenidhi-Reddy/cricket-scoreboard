@@ -5,11 +5,12 @@ function storeOvers()
     const whoIsBattingFirst=document.getElementById('whoIsBattingFirst').value.trim();
     const team1name=document.getElementById('team1name').value.trim();
     const team2name=document.getElementById('team2name').value.trim();
-    document.getElementById('over-container').classList.add('hidden');
+    document.getElementById('inputs-container').classList.add('hidden');
     const headCont=document.getElementById('teams-container');
     headCont.classList.remove('hidden');
     document.getElementById('team2h2').textContent=team2name;
     document.getElementById('team1h2').textContent=team1name;
+    localStorage.setItem('whoIsBattingFirst',whoIsBattingFirst);
     if(whoIsBattingFirst==team1name)
     {
         document.getElementById('team1score').textContent=0;
@@ -34,20 +35,26 @@ function enterRuns(event)
     const eventSource=event.target.id;
     let runs;
     let ballEle=document.getElementById('balls-rem');
+    let errorEl=document.getElementById('error');
 if (eventSource=="team1btn")
 {
 runs=document.getElementById('team1runs').value.trim();
-    if(runs.toLowerCase() != "wide"){
-runs=parseInt(runs);
-
-ballEle.textContent=(parseInt(ballEle.innerText)-1).toString();
+    if(runs.toLowerCase() == "wide"){
+        runs=1;
+        errorEl.textContent="";
     }
-    else{
-runs=1;
+    else if(runs === "" || isNaN(parseInt(runs))){
+        errorEl.textContent="Please enter number";
+        return;
+    }
+    else {
+        runs=parseInt(runs);
+        errorEl.textContent="";
+        ballEle.textContent=(parseInt(ballEle.innerText)-1).toString();
     }
     let scoreEle=document.getElementById('team1score');
     let scoreText=scoreEle.textContent.trim();
-scoreEle.textContent=(runs+parseInt(isNan(scoreText)?0:scoreText)).toString();
+scoreEle.textContent=(runs+parseInt(isNaN(scoreText)?0:scoreText)).toString();
   if(ballEle.textContent.trim()==="0"){
         document.getElementById('team1upd').classList.add('hidden');
          if(document.getElementById('team2score').textContent == "")
@@ -59,13 +66,18 @@ scoreEle.textContent=(runs+parseInt(isNan(scoreText)?0:scoreText)).toString();
     else
     {
         runs=document.getElementById('team2runs').value.trim();
- if(runs.toLowerCase()  != "wide"){
-runs=parseInt(runs);
-
-ballEle.textContent=(parseInt(ballEle.innerText)-1).toString();
+if(runs.toLowerCase() == "wide"){
+        runs=1;
+        errorEl.textContent="";
     }
-    else{
-runs=1;
+    else if(runs === "" || isNaN(parseInt(runs))){
+        errorEl.textContent="Please enter number";
+        return;
+    }
+    else {
+        runs=parseInt(runs);
+        errorEl.textContent="";
+        ballEle.textContent=(parseInt(ballEle.innerText)-1).toString();
     }
     let scoreEle=document.getElementById('team2score');
 scoreEle.textContent=(runs+parseInt(scoreEle.textContent.trim())).toString();
@@ -82,6 +94,7 @@ scoreEle.textContent=(runs+parseInt(scoreEle.textContent.trim())).toString();
     }
     if(ballEle.textContent.trim()==="0" && document.getElementById('team1score').textContent !="" && document.getElementById('team2score').textContent !="")
     {
+        res.style.fontSize="2rem";
         let team1score=parseInt(document.getElementById('team1score').textContent.trim());
         let team2score=parseInt(document.getElementById('team2score').textContent.trim());
         if(team1score > team2score)
@@ -93,6 +106,23 @@ scoreEle.textContent=(runs+parseInt(scoreEle.textContent.trim())).toString();
         }
         else{
             document.getElementById('res').textContent="It is a tie";
+            
+        }
+    }
+    if(res.textContent=="It is a tie")
+    {
+        res.innerHTML="Super Over - Number of balls remaining:&nbsp;<span id='balls-rem'>6</span>";
+        localStorage.setItem('balls', 6);
+        document.getElementById('team1score').textContent="";
+        document.getElementById('team2score').textContent="";
+        document.getElementById('team1upd').classList.add('hidden');
+        document.getElementById('team2upd').classList.add('hidden');
+        if(localStorage.getItem('whoIsBattingFirst')==document.getElementById('team2h2').textContent) {
+            document.getElementById('team1upd').classList.remove('hidden');
+            document.getElementById('team1score').textContent="0";
+        } else {
+            document.getElementById('team2upd').classList.remove('hidden');
+            document.getElementById('team2score').textContent="0";
         }
     }
 }

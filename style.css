@@ -1,5 +1,42 @@
 .hidden
 {
-    display:none;
-    
+    display:none !important;
+}
+input
+{
+    height:3vh;
+    width:10vw;
+    border-radius:0.5rem;
+}
+button
+{
+   height:2rem;
+    width:5rem;
+    border-radius:0.5rem;
+    background-color:blue;
+    color:white;
+    border:none;
+    font-size:1.1rem;
+}
+#inputs-container
+{
+    width:25%;
+    display:grid;
+    grid-template-columns:1.75fr 2fr;
+    gap:1rem;
+}
+
+#submit-container
+{
+    grid-column-start: 2;
+}
+#whole-container
+{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+    font-size:1.2rem;
 }
