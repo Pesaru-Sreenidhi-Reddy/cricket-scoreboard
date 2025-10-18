@@ -26,10 +26,6 @@ button
     gap:1rem;
 }
 
-#submit-container
-{
-    grid-column-start: 2;
-}
 #whole-container
 {
     display:flex;
@@ -39,4 +35,15 @@ button
     width:100vw;
     height:100vh;
     font-size:1.2rem;
+}
+#matchh2,#submit-container
+{
+    grid-column:span 2;
+    text-align:center;
+
+}
+
+#submit-container
+{
+    margin-top:1rem;
 }
