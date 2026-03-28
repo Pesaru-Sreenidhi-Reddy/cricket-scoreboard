@@ -12,14 +12,14 @@
     <div id="whole-container">
     <div id="inputs-container">
         <div id="matchh2"><h2>Match Details</h2></div>
-<label for="overs" title="Please enter number of overs for displaying balls remaining">Overs:</label> <input type="number" id="overs">
+<label for="overs"  >Overs:</label> 
+<input type="number" id="overs"  placeholder="e.g., 20"  >
 
-    <label for="team1name" title="Please enter name of one team">Team 1 name:</label><input type="text" id="team1name">
+    <label for="team1name"  >Team 1 name:</label><input type="text" id="team1name" placeholder="e.g., India">
 
-<label for="team2name" title="Please enter name of another team">Team 2 name:</label><input type="text" id="team2name">
-  
-    <label for="whoIsBattingFirst" title="Please enter who is batting first">Who is batting first:</label><input type="text" id="whoIsBattingFirst">
+<label for="team2name" >Team 2 name:</label><input type="text" id="team2name" placeholder="e.g., Pakistan">
 
+    <label for="whoIsBattingFirst"  >Who is batting first:</label><input type="text" id="whoIsBattingFirst" placeholder="e.g., India">
 
    <div id="submit-container"> <button type="button" onclick="storeOvers()" id="submit">Submit</button></div>
 </div>
@@ -45,8 +45,9 @@
     </div>
 </div>
     <p id="res">Number of balls remaining:&nbsp;<span id="balls-rem"></span></p>
-    <p id="error"></p>
+    
 </div>
+<p id="error"></p>
 </div>
 </div>
 </body>

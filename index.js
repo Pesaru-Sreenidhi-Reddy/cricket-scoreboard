@@ -1,10 +1,24 @@
 function storeOvers()
 {
-    const overs=document.getElementById('overs').value;
-    const balls= overs*6;
+    const overs=document.getElementById('overs').value.trim(); 
     const whoIsBattingFirst=document.getElementById('whoIsBattingFirst').value.trim();
     const team1name=document.getElementById('team1name').value.trim();
     const team2name=document.getElementById('team2name').value.trim();
+    if(overs !== '' && whoIsBattingFirst !== '' && team1name !== '' && team2name !== ''){
+         if(Number(overs)<=0)
+    {
+        document.getElementById("error").textContent="Please enter postive number for overs";
+        document.getElementById('overs').value='';
+        return;
+    }
+    if(whoIsBattingFirst !== team1name && whoIsBattingFirst !== team2name)
+         {
+        document.getElementById("error").textContent="Please enter either team 1 name or team 2 name based on who is batting first";
+        document.getElementById('whoIsBattingFirst').value='';
+        return;
+    }
+    document.getElementById("error").textContent="";
+        const balls= Number(overs)*6;
     document.getElementById('inputs-container').classList.add('hidden');
     const headCont=document.getElementById('teams-container');
     headCont.classList.remove('hidden');
@@ -28,6 +42,11 @@ function storeOvers()
     teamsCon.style.gap='1rem';   
     localStorage.setItem('balls',balls);
     document.getElementById('balls-rem').textContent=" "+balls;
+}
+else
+{ 
+    document.getElementById("error").textContent="Please enter fields";
+}
 }
 
 function enterRuns(event)
