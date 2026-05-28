@@ -5,7 +5,7 @@
 input
 {
     height:3vh;
-    width:10vw;
+    width:25%;
     border-radius:0.5rem;
 }
 button
@@ -18,22 +18,34 @@ button
     border:none;
     font-size:1.1rem;
 }
-#inputs-container
+@media(min-width:
+833px){#inputs-container
 {
     width:25%;
     display:grid;
     grid-template-columns:1.75fr 2fr;
     gap:1rem;
 }
+}
 
+#inputs-container
+{
+    width:100%;
+    height:90%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+}
 #whole-container
 {
     display:flex;
+    height:100%;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     width:100vw;
-    height:100vh;
     font-size:1.2rem;
 }
 #matchh2,#submit-container
